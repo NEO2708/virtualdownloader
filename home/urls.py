@@ -7,4 +7,5 @@ from home import home
 urlpatterns = [
     path('insta',igdownloader.InstaDownloader ),
     path('homepage',home.homepage),
+    path('',home.homepage),
 ]
