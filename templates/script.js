@@ -23,7 +23,7 @@ igdownload.addEventListener("click", () => {
     else {
         igdownload.innerHTML = "Please Wait ..."
         loader.style.display = "flex";
-        var url = "https://virtualdownloader.vercel.app/homepage" + linkf;
+        var url = "https://virtualdownloader.vercel.app/insta?link=" + linkf;
         form.style.display="none"
         execute(url)
     }
