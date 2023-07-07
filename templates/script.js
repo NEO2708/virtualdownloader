@@ -1,62 +1,37 @@
 var title = document.getElementById("title")
 var content = document.getElementById("content")
 var download = document.getElementById("download")
+var form = document.getElementById("form")
+var red = document.getElementsByClassName("red")[0]
 
+var error = document.getElementById("error")
 
-
-// download the file
-function downloadFile(posturl, type) {
-    const fileUrl = posturl; // Replace with the API endpoint URL
-
-    fetch(posturl)
-        .then(response => {
-            if (response.ok) {
-                return response.blob();
-            } else {
-                throw new Error('Error downloading file.');
-            }
-        })
-        .then(blob => {
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            if (type == "video") {
-                link.download = 'IGVIDEO.mp4';
-            }
-            else {
-                link.download = 'IGPOST.png';
-
-            }
-            // Specify the desired file name for the downloaded file
-            link.click();
-            URL.revokeObjectURL(url);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}
-// download video 
-function reqdownload() {
-    var linkf = document.getElementById("postUrlInputIg").value;
-    var url = "https://freelance-project-ytmp3-production.up.railway.app/insta?link=" + linkf
-    var type = "video"
-    downloadFile(url, type)
-}
-// download image
-function reqdownloadimg() {
-    var linkf = document.getElementById("postUrlInputIg").value;
-    var url = "https://freelance-project-ytmp3-production.up.railway.app/insta?link=" + linkf
-    var type = "image"
-    downloadFile(url, type)
-}
 
 var igdownload = document.getElementById("downloadButtonig")
 var loader = document.getElementById("loader")
 
 igdownload.addEventListener("click", () => {
-    loader.style.display = "flex";
+
     var linkf = document.getElementById("postUrlInputIg").value;
-    var url = "https://freelance-project-ytmp3-production.up.railway.app/insta?link=" + linkf
+    ist = linkf.includes("www.instagram.com")
+    if (linkf == '') {
+        error.innerHTML = "Please enter The Url "
+    }
+    else if (ist == false) {
+        error.innerHTML = "Please enter Valid  URl From Instgram App "
+    }
+    else {
+        igdownload.innerHTML = "Please Wait ..."
+        loader.style.display = "flex";
+        var url = "https://virtualdownloader.vercel.app/homepage" + linkf;
+        form.style.display="none"
+        execute(url)
+    }
+
+
+})
+
+function execute(url) {
     fetch(url, { mode: 'cors', method: "GET" })
         .then((response) => response.json())
         .then((data) => {
@@ -67,50 +42,55 @@ igdownload.addEventListener("click", () => {
             const images = data.imageurls;
             if (videos.length == 1) {
                 loader.style.display = "none";
+                form.style.display = "none"
+
 
                 content.innerHTML += `
-                    <div class="dcard">
-                        <div class="profilerr">
+                <div class="dcard">
+                    <div class="profilerr">
 
 
-                        <div class="colname">
-                        <span class="pun" >${data.username}</span>
-                        <span class="pun" >${data.name}</span>
-                            </div>
+                    <div class="colname">
+                    <span class="punun" >${data.username}</span>
+                    <span class="pun" >${data.name}</span>
+                        </div>
 
-                        </div>
-                        <div class="cover">
-                            <video src="${videos[0]}" controls ></video>
-                        </div>
-                        <div class="dowlik">
-                            <a href="${videos[0]}">Download Video</a>
-                        </div>
-                    </div>`
+                    </div>
+                    <div class="cover">
+                        <video src="${videos[0]}" controls ></video>
+                    </div>
+                    <div class="dowlik">
+                        <a href="${videos[0]}">Download Video</a>
+                    </div>
+                </div>`
+                red.style.display = "flex"
             }
             if (images.length == 1) {
                 loader.style.display = "none";
 
                 content.innerHTML += `
-                     <div class="dcard">
-                    <div class="profilerr">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png" alt="profile">
-                        <div class="colname">
-                                <span class="pun" >${data.username}</span>
-                                <span class="pun" >${data.name}</span>
-                                    </div>
-                    </div>
-                    <div class="cover">
-                        <img src="${images[0]}" alt="expired">
-                    </div>
-                    <div class="desc">
-                        <span class="pun" >${data.caption}</span>
-                    </div>                    
-                    <div class="dowlik">
-                        <a href="${images[0]}">Download Image</a>
-                    </div>
-                    </div> 
+                 <div class="dcard">
+                <div class="profilerr">
 
-                `
+                    <div class="colname">
+                            <span class="punun" >${data.username}</span>
+                            <span class="pun" >${data.name}</span>
+                                </div>
+                </div>
+                <div class="cover">
+                    <img src="${images[0]}" alt="expired">
+                </div>
+                <div class="desc">
+                    <span class="pun" >${data.caption}</span>
+                </div>                    
+                <div class="dowlik">
+                    <a href="${images[0]}">Download Image</a>
+                </div>
+                </div> 
+
+            `
+            red.style.display="flex"
+
             }
             if (videos.length > 1) {
 
@@ -118,24 +98,26 @@ igdownload.addEventListener("click", () => {
                     loader.style.display = "none";
 
                     content.innerHTML += `
-                        <div class="dcard">
-                            <div class="profilerr">
+                    <div class="dcard">
+                        <div class="profilerr">
 
-                                <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png" alt="profile">
-                                <div class="colname">
-                                <span class="pun" >${data.username}</span>
-                                <span class="pun" >${data.name}</span>
-                                    </div>
-                                
-                            </div>
-                            <div class="cover">
-                                <video src="${videos[index]}" controls ></video>
-                            </div>
-                            <div class="dowlik">
-                                <a href="${videos[index]}">Download Video</a>
-                            </div>
-                        </div> 
+
+                            <div class="colname">
+                            <span class="punun" >${data.username}</span>
+                            <span class="pun" >${data.name}</span>
+                                </div>
+                            
+                        </div>
+                        <div class="cover">
+                            <video src="${videos[index]}" controls ></video>
+                        </div>
+                        <div class="dowlik">
+                            <a href="${videos[index]}">Download Video</a>
+                        </div>
+                    </div> 
 `
+                    red.style.display = "flex"
+
                 }
             }
             if (images.length > 1) {
@@ -143,23 +125,25 @@ igdownload.addEventListener("click", () => {
                     loader.style.display = "none";
 
                     content.innerHTML += `
-                    <div class="dcard">
-                        <div class="profilerr">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png" alt="profile">
-                            <div class="colname">
-                                <span class="pun" >${data.username}</span>
-                                <span class="pun" >${data.name}</span>
-                                    </div>
-                        </div>
-                        <div class="cover">
-                            <img src="${images[index]}" alt="expired">
-                        </div>
-                        <div class="dowlik">
-                            <a href="${images[index]}">Download Image</a>
-                        </div>
-                    </div> 
+                <div class="dcard">
+                    <div class="profilerr">
 
-                `
+                        <div class="colname">
+                            <span class="punun" >${data.username}</span>
+                            <span class="pun" >${data.name}</span>
+                                </div>
+                    </div>
+                    <div class="cover">
+                        <img src="${images[index]}" alt="expired">
+                    </div>
+                    <div class="dowlik">
+                        <a href="${images[index]}">Download Image</a>
+                    </div>
+                </div> 
+
+            `
+                    red.style.display = "flex"
+
 
                 }
             }
@@ -167,6 +151,10 @@ igdownload.addEventListener("click", () => {
         }
 
         ).catch(error =>
-            content.innerHTML = `<h1>Please check Your URL or Check if the Account is Not PRIVATE</h1>`
+            igdownload.innerHTML = "Download ",
+
+            content.innerHTML = `<h1 class="err" >Check if the Account is Not PRIVATE and try again </h1>`,
+            red.style.display = "flex"
+
         )
-})
+}
