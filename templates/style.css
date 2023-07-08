@@ -1,13 +1,15 @@
 * {
     margin: 0;
     padding: 0;
-    transition: all .2s ease-in-out
+    transition: all .2s ease-in-out;
+    scroll-behavior: smooth;
+
 }
 
 body {
     width: 100%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen, Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
-    overflow-x: hidden
+    overflow-x: hidden;
 }
 
 :root {
@@ -99,6 +101,47 @@ body {
     font-weight: 800
 }
 
+.c {
+    flex-direction: column;
+}
+
+.rrr {
+    height: auto;
+}
+
+.featcard {
+    width: 100%;
+    margin-top: 50px;
+    align-items: flex-start;
+}
+
+.feathh {
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+    margin: 30px 30px;
+
+}
+
+.vidfeat {
+    width: 400px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.featdec {
+    max-width: 550px;
+}
+
+.featdec h4 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.featdec p {
+    font-size: 25px;
+}
+
 .desc {
 
     text-overflow: ellipsis;
@@ -125,7 +168,8 @@ nav {
     margin-top: 60px;
     width: 100%;
     padding: 10px;
-    background: rgba(217, 217, 217, .2);
+    /* background: rgba(217, 217, 217, .2); */
+    background-color: aliceblue;
     height: 300px
 }
 
@@ -283,17 +327,18 @@ nav {
     display: none;
     animation: spin 1s linear infinite
 }
-#moto{
+
+#moto {
     font-size: 30px;
     color: rgb(32, 21, 31);
     font-weight: 600;
     text-align: center;
     margin-bottom: 30px;
     margin-top: 30px;
-    
-        }
-#htd
-{
+
+}
+
+#htd {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -301,7 +346,27 @@ nav {
     flex-direction: row;
     flex-wrap: wrap;
 }
-.boxhead{
+
+#featuresw {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+}
+
+#features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    max-width: 1200px;
+    width: 100%;
+
+
+}
+
+.boxhead {
     text-align: center;
     font-weight: 700;
     /* background: #7017FF; */
@@ -309,27 +374,42 @@ nav {
     border-bottom: 2px solid rgba(0, 0, 0, 0.355);
     font-size: 25px;
 }
-.htdbox{
+
+.htdbox {
     height: 150px;
     width: 350px;
     padding: 10px;
     border-radius: 20px;
-    border: 2px solid black;
-background-color:rgba(218, 218, 218, 0.218);
+    border: 1px solid rgba(0, 0, 0, 0.332);
+    background-color: rgba(218, 218, 218, 0.218);
     color: rgb(0, 0, 0);
 }
-.stepimg{
+
+.stepimg {
     width: 100%;
     height: auto;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.355);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.355);
 }
-.boxstep{
+
+.boxstep {
     margin-top: 10px;
     text-align: center;
     font-weight: 600;
     font-size: 25px;
     color: #0063f7;
 }
+
+footer {
+    background-color: aliceblue;
+    margin-top: 20px;
+    padding: 25px;
+    flex-wrap: wrap;
+}
+
+footer a h1 {
+    text-align: center;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg)
@@ -337,6 +417,42 @@ background-color:rgba(218, 218, 218, 0.218);
 
     100% {
         transform: rotate(360deg)
+    }
+}
+
+@media (max-width:1000px) {
+    .vidfeat {
+        margin-left: 10px;
+        width: 300px;
+        height: auto;
+    }
+
+    .featdec h4 {
+        font-size: 30px;
+    }
+
+    .featdec p {
+        font-size: 20px;
+    }
+
+    .featdec {
+        max-width: 400px;
+    }
+}
+
+@media (max-width:800px) {
+    .vidfeat {
+        margin-left: 10px;
+        width: 300px;
+        height: auto;
+    }
+
+    .featcard {
+        flex-wrap: wrap;
+    }
+
+    .featdec {
+        max-width: 600px;
     }
 }
 
@@ -375,6 +491,20 @@ background-color:rgba(218, 218, 218, 0.218);
     .asd {
         font-size: 15px
     }
+
+    #features {
+        grid-template-columns: repeat(1, minmax(auto, 1fr));
+
+    }
+
+    .featcard {
+        align-items: center;
+    }
+
+    .featdec {
+        margin-left: 20px;
+    }
+
 }
 
 @media(max-width:400px) {
