@@ -5,12 +5,13 @@ var form = document.getElementById("form")
 var red = document.getElementsByClassName("red")[0]
 
 var error = document.getElementById("error")
-
+var htdw=document.getElementById("htdw")
 
 var igdownload = document.getElementById("downloadButtonig")
 var loader = document.getElementById("loader")
 
 igdownload.addEventListener("click", () => {
+
 
     var linkf = document.getElementById("postUrlInputIg").value;
     ist = linkf.includes("www.instagram.com")
@@ -36,6 +37,7 @@ igdownload.addEventListener("click", () => {
             if (videos.length == 1) {
                 loader.style.display = "none";
                 form.style.display = "none"
+                htdw.style.display = "none"
 
 
                 content.innerHTML += `
@@ -58,9 +60,10 @@ igdownload.addEventListener("click", () => {
                 </div>`
                 red.style.display = "flex"
             }
-            if (images.length == 1) {
+            else if (images.length == 1) {
                 loader.style.display = "none";
                 form.style.display = "none"
+                htdw.style.display = "none"
 
 
                 content.innerHTML += `
@@ -87,11 +90,12 @@ igdownload.addEventListener("click", () => {
             red.style.display="flex"
 
             }
-            if (videos.length > 1) {
+            else if (videos.length > 1) {
 
                 for (let index = 0; index < videos.length; index++) {
                     loader.style.display = "none";
                 form.style.display = "none"
+                htdw.style.display = "none"
 
 
                     content.innerHTML += `
@@ -117,10 +121,11 @@ igdownload.addEventListener("click", () => {
 
                 }
             }
-            if (images.length > 1) {
+            else if (images.length > 1) {
                 for (let index = 0; index < images.length; index++) {
                     loader.style.display = "none";
                 form.style.display = "none"
+                htdw.style.display = "none"
 
 
                     content.innerHTML += `
@@ -147,11 +152,14 @@ igdownload.addEventListener("click", () => {
                 }
             }
 
-        }).catch(error =>
-            igdownload.innerHTML = "Download ",
+            else{
+                igdownload.innerHTML = "Download "
 
-            content.innerHTML = `<h1 class="err" >Check if the Account is Not PRIVATE and try again </h1>`,
-            red.style.display = "flex")
+            content.innerHTML = `<h1 class="err" >Check if the Account is Not PRIVATE and try again </h1>`
+            red.style.display = "flex"
+            }
+
+        })
 
     }
 
@@ -170,6 +178,7 @@ function execute(url) {
             if (videos.length == 1) {
                 loader.style.display = "none";
                 form.style.display = "none"
+                htdw.style.display = "none"
 
 
                 content.innerHTML += `
