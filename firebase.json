@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "site": "virtualdownloader",
+    "public": "templates",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "headers": [ {
+      "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+      "headers": [ {
+        "key": "Access-Control-Allow-Origin",
+        "value": "*"
+      } ]
+    } ]
+  }
+}
