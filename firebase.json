@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "virtualdownloader",
-    "public": "templates",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
