@@ -12,8 +12,6 @@ from apify_client import ApifyClient
 
 
 @api_view()
-
-
 def InstaDownloader(request):
     inputt =request.GET['link']
     stream=[]
