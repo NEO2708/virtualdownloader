@@ -5,7 +5,7 @@ import urllib.request
 import requests
 from django.http import HttpResponse
 from django.core.files.base import ContentFile
-from .models import Igdatabse
+
 
 
 @api_view()
@@ -16,17 +16,7 @@ def ytdownload(request):
     if file_url:
         try:
             # Fetch the file from the URL
-            response = requests.get(file_url)
-            file_data = response.content
-            
-            # Create a new instance of the Igdatabse
-            file_model = Igdatabse()
-            
-            # Assign the fetched file to the file field
-            file_model.file.save(file_url.split('/')[-1], ContentFile(file_data))
-            
-            # Save the model instance to the database
-            file_model.save()
+
             
             return HttpResponse('File uploaded successfully.')
 

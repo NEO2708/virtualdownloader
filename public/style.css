@@ -29,13 +29,18 @@ body {
 .sa {
     justify-content: space-around
 }
-
+.nor{
+    text-align: center;
+}
 .ca {
     align-items: center
 }
 
 .lg {
-    color: var(--txtclr)
+    color: var(--txtclr);
+    font-size: 25px;
+    font-weight: 600;
+    
 }
 
 .jc {
@@ -116,7 +121,6 @@ body {
 }
 
 .feathh {
-    width: 100%;
     text-align: center;
     font-size: 35px;
     margin: 30px 30px;
@@ -457,8 +461,9 @@ footer a h1 {
 }
 
 @media(max-width:600px) {
+
     #form {
-        padding: 0
+        padding: 0px;
     }
 
     .clrbd {

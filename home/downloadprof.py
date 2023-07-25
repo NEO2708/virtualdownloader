@@ -8,6 +8,8 @@ def downloadprof(request):
     L = instaloader.Instaloader()
     stream=[]
     username = request.GET['link']
+    
+    L.login("insta.botnew", "instabot001")
     posts = instaloader.Profile.from_username(L.context, username).get_posts()
     users = set()
     for post in posts:
