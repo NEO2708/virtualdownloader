@@ -8,7 +8,7 @@ def downloadprof(username):
     stream=[]
 
     
-    L.login("insta.botnew", "instabot001")
+    # L.login("insta.botnew", "instabot001")
     posts = instaloader.Profile.from_username(L.context, username).get_posts()
     users = set()
     count=1

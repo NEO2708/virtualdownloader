@@ -125,7 +125,7 @@ def InstaDownloader(request):
         file_name = "Vid"+username+".png"
         image=upload_file(file_url, file_name)
         imagepost.append(image) 
-        return Response({"account_type":False,"videourls":videopost, "imageurls": imagepost, "username":username,"name":name ,"type":"video","caption":caption}) 
+        return Response({"account_type":False,"videourls":videopost, "imageurls": imagepost, "username":username,"name":name ,"type":"image","caption":caption}) 
     else:  
         return Response({"account_type":True,"videourls":videopost, "imageurls": imagepost, "username":username,"name":name ,"type":"video","caption":caption})       
 

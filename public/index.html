@@ -6,87 +6,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Virtual Downloader - Instagram Downloader </title>
+    <title> Virtual Downloader - Instagram Downloader | Reel | Images | Videos | IGTV </title>
     <meta name="robots" content="index, follow">
-    <meta content="Instagram Downloader , download reel , free download , download instagram videos ,post, igtv, download, virtual downloader, instgram "
+    <meta
+        content="Instagram Downloader , download reel , free download , download instagram videos ,post, igtv, download, virtual downloader, instgram "
         name="keywords">
     <meta name="audience" content="Everyone">
     <meta name="google-site-verification" content="cQwdBWIbhba4RItxT8gHfbwOF3U6Q9qQtujUT2CtO2s" />
     <meta name="description"
         content="Download Instagram Images | Reels | Videos | IGTV - Fast, Easy and Secure Download For free. Try Now Virtual Downloader">
     <link rel="icon" type="image/x-icon" href="https://neo2708.github.io/pic.github.io/vdlogo.png">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="canonical" href="https://virtualdownloader.web.app/" />
 
 
 </head>
 
 <body>
-    <div id="nav"></div>
+
     <nav class="df r sa ca">
         <a class=" un" href="https://virtualdownloader.web.app/">
 
             <span class="lg">Virtual Downloader</span>
         </a>
-
+        <a href="#htdw" class="htdwbtn">
+            How To Download ?
+        </a>
     </nav>
 
 
     <div id="form" class="df col sa ca">
         <div class="infb">
-            <h1 class="df r ca nor" style="font-size: 30px;"> Instagram Downloader</h1>
+            <h1 class="df r ca nor" style="font-size: 35px; margin-bottom: 15px;"> Instagram Downloader</h1>
             <div class="df r ca sa wp inf2">
 
-                <span class="rs"> Reels  |</span>
+                <span class="rs"> Reels |</span>
                 <span class="vs"> Videos |</span>
                 <span class="is"> Images |</span>
                 <span class="vs"> IGTV</span>
             </div>
 
         </div>
-        <div class="clrbd">
-
-            <input type="text" id="postUrlInputIg" class="inp" placeholder="Enter Instagram Post, Reel, IGTV URL">
-        </div>
         <span id="error"></span>
-        <button id="downloadButtonig" class="btns df jc ac">Download <svg width="64px" height="30px" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg" fill="#000000">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                    <title></title>
-                    <g id="Complete">
-                        <g id="download">
-                            <g>
-                                <path d="M3,12.3v7a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2v-7" fill="none" stroke="#ffffff"
-                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+
+        <div class="inpwrap df r jc ac fwt g50 ">
+            <div class="clrbd df">
+
+                <input type="text" id="postUrlInputIg" class="inp" placeholder="Paste Any Post, Reel, IGTV Link">
+                <button class="pstbtn" id="pstbtn">Paste</button>
+                <button class="pstbtn" id="clrbtn" onclick="clearinp()">Clear</button>
+            </div>
+            <button id="downloadButtonig" class="btns df jc ac">Download
+                <svg width="64px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title></title>
+                        <g id="Complete">
+                            <g id="download">
                                 <g>
-                                    <polyline data-name="Right" fill="none" id="Right-2"
-                                        points="7.9 12.3 12 16.3 16.1 12.3" stroke="#ffffff" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2"></polyline>
-                                    <line fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" x1="12" x2="12" y1="2.7" y2="14.2"></line>
+                                    <path d="M3,12.3v7a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2v-7" fill="none" stroke="#ffffff"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                    <g>
+                                        <polyline data-name="Right" fill="none" id="Right-2"
+                                            points="7.9 12.3 12 16.3 16.1 12.3" stroke="#ffffff" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2"></polyline>
+                                        <line fill="none" stroke="#ffffff" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="2.7" y2="14.2">
+                                        </line>
+                                    </g>
                                 </g>
                             </g>
                         </g>
                     </g>
-                </g>
-            </svg></button>
+                </svg>
+                <span class="">
+
+                </span>
+            </button>
+        </div>
 
 
 
-    </div>
-    <div class="df c ca jc " style="width: 100%;">
-        <section id="content">
-
-            <div class="loader" id="loader"></div>
-        </section>
 
     </div>
+
+    <section id="content" class="df c ca jc " style="width: 100%;">
+
+        <div id="loader" class="df c jc ac ">
+            <div class="loader"></div>
+            <span class="pw">Please Wait !!</span>
+        </div>
+
+    </section>
+
+
     <div class="df jc ac red">
-        <a id="ref" class="df jc ac" href="https://virtualdownloader.web.app">
-            Download Another <svg width="64px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                fill="#000000">
+        <a id="ref" class="df jc ac" href="http://127.0.0.1:5500/public/index.html">
+            Download Another
+            <svg width="64px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
@@ -113,61 +131,107 @@
     <!--  -->
     <div id="iasuh">
 
-        <section id="htdw">
-            <div id="moto">
-                Download Any Instgram POST in 3 Steps.
-            </div>
-            <div id="htd">
-                <div class="htdbox">
-                    <div class="boxhead">Step-1</div>
 
-                    <!-- <img class="stepimg" src="Group 1.png" alt=""> -->
-                    <span class="boxstep"> COPY the POST URL you want to download</span>
-                </div>
-                <div class="htdbox">
-                    <div class="boxhead">Step-2</div>
-                    <!-- <img class="stepimg" src="Screenshot 2023-07-08 at 2.23.15 AM.png" alt=""> -->
-                    <span class="boxstep"> PASTE the POST URL In the INPUT Field</span>
-                </div>
-                <div class="htdbox">
-                    <div class="boxhead">Step-3</div>
-                    <span class="boxstep"> Wait and Tap on Download Video or Image </span>
-                </div>
-            </div>
-        </section>
-        <h2 class="feathh">What we can do !</h2>
+        <div id="moto">
+            What we can do !
+        </div>
         <section id="featuresw" class="">
             <div id="features" class="">
                 <div class="featcard df c sa ac ">
-                    <img class="vidfeat" src="https://neo2708.github.io/pic.github.io/desc1.png" alt="">
+                    <img class="vidfeat" src="Frame 2 (1).png" alt="download instagram videos ">
                     <div class=" featdec df c">
-                        <h4>Download Videos</h4>
+                        <h2>Download Instagram Videos</h2>
                         <p>We can Help you To Download Videos from Instagram and Save it offline. You can also download
                             multiple videos Post easily and fast</p>
                     </div>
                 </div>
-                <div class="featcard df c sa ac ">
-                    <img class="vidfeat rrr" src="https://neo2708.github.io/pic.github.io/desc3.png" alt="">
+                <div class="featcard df c  ac ">
+                    <img class="vidfeat rrr" src="downloadreel.png" alt="downlaod instagram  reels">
                     <div class=" featdec df c">
-                        <h4>Download Reels</h4>
+                        <h2>Download Instagram Reels</h2>
                         <p>Download The trending Reels with ease and Enjoy and Share on your sory easily. </p>
                     </div>
                 </div>
                 <div class="featcard df c sa ac ">
-                    <img class="vidfeat" src="https://neo2708.github.io/pic.github.io/desc2.png" alt="">
+                    <img class="vidfeat" src="download image.png" alt="download instagram image">
                     <div class=" featdec df c">
-                        <h4>Download Images</h4>
+                        <h2>Download Instagram Images</h2>
                         <p>You can Download Images from Instgram Full HD and fast. </p>
                     </div>
                 </div>
                 <div class="featcard df c sa ac ">
-                    <img class="vidfeat" src="https://neo2708.github.io/pic.github.io/desc4.png" alt="">
+                    <img class="vidfeat" src="download igtv.png" alt="download igtv">
                     <div class=" featdec df c">
-                        <h4>Download IGTV</h4>
+                        <h2>Download IGTV</h2>
                         <p>Download long IGTV fast and Enjoy Offline whenever You want. </p>
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="htdw">
+            <div id="moto">
+                How to Downlaod
+            </div>
+            <div id="htd">
+                <div class="htdbox">
+                    <div class="boxhead">1</div>
+
+                    <div class="bostwr">
+                        <span class="boxstep"> Copy Any Post Link from Instgram </span>
+                        <br>
+                        <span class="boxstepin df ac"> - Tap on Share button :
+                            <svg aria-label="Share Post" class="x1lliihq x1n2onr6" color="rgb(245, 245, 245)"
+                                fill="black" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                <title>Share Post</title>
+                                <line fill="none" stroke="black" stroke-linejoin="round" stroke-width="2" x1="22"
+                                    x2="9.218" y1="3" y2="10.083"></line>
+                                <polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
+                                    stroke="black" stroke-linejoin="round" stroke-width="2"></polygon>
+                            </svg>
+                        </span>
+
+                        <span class="boxstepin df ac"> - Then Tap on <b>" Copy Link " </b> button : <span
+                                style="margin-left: 5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="26" viewBox="0 0 27 26"
+                                    fill="none">
+                                    <path d="M9.57143 17.0663L17.2857 8.70124" stroke="black" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <path
+                                        d="M10.8571 4.51875L12.1429 3.26399L13 2.42749L14.7143 1.59098L16.8571 1.17273L19.1607 1.59098L21.1429 2.42749L22.8571 3.68224L24.1429 5.7735L24.5714 7.02826L25 8.70127L24.5714 10.7925L23.7143 12.4655L22.8571 13.7203L21.5714 15.3933"
+                                        stroke="black" stroke-width="3" stroke-linecap="round" />
+                                    <path
+                                        d="M15.1935 21.2382L14.2857 22.5917L13 23.7583L11.4728 24.3295L9.351 24.8398L7.03074 24.5214L5.01263 23.7712L3.24318 22.5917L1.86398 20.5579L1.37898 19.3229L1.28423 17.2337L1.18949 15.1445L1.86398 13.302L2.71429 12.0473L3.99707 10.8366"
+                                        stroke="black" stroke-width="3" stroke-linecap="round" />
+                                </svg>
+                            </span>
+                        </span>
+                        </span>
+                    </div>
+
+
+                </div>
+
+                <div class="htdbox">
+                    <div class="boxhead">2</div>
+                    <div class="bostwr">
+
+                        <span class="boxstep"> Paste Copied Link Above </span>
+                    </div>
+                </div>
+                <div class="htdbox">
+                    <div class="boxhead">3</div>
+                    <div class="bostwr">
+
+                        <span class="boxstep"> Tap on <b>"Download Image"</b> or <b>"Download Video"</b> </span>
+                    </div>
+                </div>
+
+                <a href="#form" class="dnbtn" >
+                    Downlaod Now
+                </a>
+            </div>
+
+
         </section>
     </div>
 
@@ -177,12 +241,12 @@
 
             <span class="lg">Virtual Downloader</span>
         </a>
-        <span>Download Instagram All Type of POST for Free</span>
+        <span style="text-align: center;">Download Instagram All Type of POST for Free</span>
 
     </footer>
 
 </body>
-
-<script src="https://static.staticsave.com/vendors/js.js"></script>
+<script src="script.js"></script>
+<!-- <script src="https://static.staticsave.com/vendors/js.js"></script> -->
 
 </html>

@@ -8,6 +8,8 @@ from django.http import HttpResponse
 
 def download_file(request):
     L = instaloader.Instaloader()
+    # L.login("insta.botnew", "instabot001")
+
     inputt = request.GET['link']
     
     url = inputt

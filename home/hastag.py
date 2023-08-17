@@ -10,7 +10,7 @@ def download_hashtag_posts(request):
     L.login("insta.botnew", "instabot001")
 
     hashtag= request.GET['link']
-    max_count=100
+    # max_count=100
     strem=[]
 
     # Define a function to filter posts by hashtag
@@ -21,16 +21,16 @@ def download_hashtag_posts(request):
     posts = instaloader.Hashtag.from_name(L.context, hashtag).get_posts()
 
     # Download posts with the specified hashtag
-    count = 0
+    # count = 0
     for post in posts:
         if filter_hashtag_post(post):
             # L.download_post(post, target=f"{hashtag}_posts")
             hash=post.url
             strem.append(hash)
-            count += 1
+            # count += 1
 
-        if count >= max_count:
-            break
+        # if count >= max_count:
+        #     break
 
     return Response(strem)
 

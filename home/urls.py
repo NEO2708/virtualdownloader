@@ -4,12 +4,14 @@ from home import igdownloader
 from home import home
 from home import downloadprof
 from home import hastag
-
+from home import postDownloader
+from home import post
 
 urlpatterns = [
-    path('insta',igdownloader.InstaDownloader ),
-    path('homepage',home.homepage),
-    path('',home.homepage),
-    path('igprofile',downloadprof.downloadprof),
-    path("hashtag",hastag.download_hashtag_posts)
+    path('insta', post.posts),
+    # path('homepage',home.homepage),
+    # path('',home.homepage),
+    # path('igprofile',downloadprof.downloadprof),
+    # path("hashtag",hastag.download_hashtag_posts),
+
 ]
