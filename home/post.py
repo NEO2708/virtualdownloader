@@ -74,14 +74,14 @@ def posts(request):
             return Response({"account_type":False,"videourls":videopost, "imageurls": imagepost, "username":username ,"type":"image"}) 
         elif post.typename == "GraphSidecar":
             count=1
-            for media in post.get_sidecar_nodes():
+            for media in post.get_sidecar_nodes():             
              if(media.is_video == True):
                 furl=upload_file(media.video_url,username+ str(count)+".mp4")
                 videopost.append(furl)
                 vthumb=upload_file(media.display_url,username+str(count)+"th.png")
                 videothumb.append(vthumb)
                 count+=1
-            else:
+             else:
                 furl=upload_file(media.display_url,username+ str(count)+".jpg")
 
                 imagepost.append(furl)
@@ -97,5 +97,6 @@ def posts(request):
 
     except instaloader.exceptions.InstaloaderException:
         return Response("error")
+
 
 

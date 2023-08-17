@@ -170,7 +170,7 @@ function trigger() {
                             <img src="${images[index]}" controls ></img>
                         </div>
                         <div class="dowlik">
-                            <a href="${images[index]}">Download Video</a>
+                            <a href="${images[index]}">Download Image</a>
                         </div>
                     </div> 
 `
