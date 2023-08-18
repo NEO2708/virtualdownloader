@@ -13,6 +13,23 @@ var loader = document.getElementById("loader");
 var inp = document.getElementById("postUrlInputIg")
 
 function trigger() {
+    async function uploadFromUrl(params) {  
+  const baseUrl  = "https://api.bytescale.com";
+  const path     = `/v2/accounts/12a1yXY/uploads/url`;
+  const entries  = obj => Object.entries(obj).filter(([,val]) => (val ?? null) !== null);
+  const response = await fetch(`${baseUrl}${path}`, {
+    method: "POST",
+    body: JSON.stringify(params.requestBody),
+    headers: Object.fromEntries(entries({
+      "Authorization": `Bearer public_12a1yXY8DiUy1WgBg9cBLzYxQnwd`,
+      "Content-Type": "application/json",
+    }))
+  });
+  const result = await response.json();
+  if (Math.floor(response.status / 100) !== 2)
+    throw new Error(`Bytescale API Error: ${JSON.stringify(result)}`);
+  return result;
+}
     var linkf = document.getElementById("postUrlInputIg").value;
     ist = linkf.includes("www.instagram.com")
     if (linkf == '') {
@@ -36,145 +53,89 @@ function trigger() {
 
                 const videos = data.videourls;
                 const images = data.imageurls;
-        //         if (videos.length == 1) {
-        //             loader.style.display = "none";
-        //             form.style.display = "none"
-        //             htdw.style.display = "none"
+                const username= data.username;
+                
 
-
-        //             content.innerHTML += `
-        //         <div class="dcard">
-        //             <div class="profilerr">
-
-
-        //             <div class="colname">
-        //             <span class="punun" >${data.username}</span>
-                    
-        //                 </div>
-
-        //             </div>
-        //             <div class="cover">
-        //                 <img src="${data.videothumb}"  ></img>
-        //             </div>
-        //             <div class="dowlik">
-        //                 <a href="${videos[0]}">Download Video</a>
-        //             </div>
-        //         </div>`
-        //             red.style.display = "flex"
-        //         }
-        //         else if (images.length == 1) {
-        //             loader.style.display = "none";
-        //             form.style.display = "none"
-        //             htdw.style.display = "none"
-
-
-        //             content.innerHTML += `
-        //          <div class="dcard">
-        //         <div class="profilerr">
-
-        //             <div class="colname">
-        //                     <span class="punun" >${data.username}</span>
-                            
-        //                         </div>
-        //         </div>
-        //         <div class="cover">
-        //             <img src="${images[0]}" alt="expired">
-        //         </div>
-        //         <div class="desc">
-                    
-        //         </div>                    
-        //         <div class="dowlik">
-        //             <a href="${images[0]}">Download Image</a>
-        //         </div>
-        //         </div> 
-
-        //     `
-        //             for (let index = 0; index < images.length; index++) {
-        //                 loader.style.display = "none";
-        //                 form.style.display = "none"
-        //                 htdw.style.display = "none"
-
-
-        //                 content.innerHTML += `
-        //     <div class="dcard">
-        //         <div class="profilerr">
-
-        //             <div class="colname">
-        //                 <span class="punun" >${data.username}</span>
-                        
-        //                     </div>
-        //         </div>
-        //         <div class="cover">
-        //             <img src="${images[index]}" alt="expired">
-        //         </div>
-        //         <div class="dowlik">
-        //             <a href="${images[index]}">Download Image</a>
-        //         </div>
-        //     </div> 
-
-        // `
-        //                 red.style.display = "flex"
-
-
-        //             }
-
-        //         }
+       
                if (videos.length >= 1 || images.length >= 1) {
 
                     for (let index = 0; index < videos.length; index++) {
-                        loader.style.display = "none";
-                        form.style.display = "none"
-                        htdw.style.display = "none"
+                       
 
 
-                        content.innerHTML += `
-                    <div class="dcard">
-                        <div class="profilerr">
+                        uploadFromUrl({
+                           
+                            requestBody: {
+                              url: videos[index],
+                              originalFileName: `${username}.mp4`,
+                            }
+                          }).then(
+                            response => {
+                              url=response.fileUrl
+                              loader.style.display = "none";
+                              form.style.display = "none"
+                              htdw.style.display = "none"
+                              content.innerHTML += `
+                                              <div class="dcard">
+                                                  <div class="profilerr">
 
-
-                            <div class="colname">
-                            <span class="punun" >${data.username}</span>
-                            
-                                </div>
-                            
-                        </div>
-                        <div class="cover">
-                            <img src="${data.videothumb[index]}" controls ></img>
-                        </div>
-                        <div class="dowlik">
-                            <a href="${videos[index]}">Download Video</a>
-                        </div>
-                    </div> 
-`
-                        red.style.display = "flex"
+                          
+                          
+                                                      <div class="colname">
+                                                      <span class="punun" >${username}</span>
+                                                      
+                                                          </div>
+                                                      
+                                                  </div>
+                                                  <div class="cover">
+                                                      <video src="${url}"  ></video>
+                                                  </div>
+                                                  <div class="dowlik">
+                                                      <a href="${url}?_download=true">Download Video</a>
+                                                  </div>
+                                              </div> 
+                          `
+                                                  red.style.display = "flex"
+                            })
 
                     }
                     for (let index = 0; index < images.length; index++) {
-                        loader.style.display = "none";
-                        form.style.display = "none"
-                        htdw.style.display = "none"
+                        
 
+                        uploadFromUrl({
+                            requestBody: {
+                              url: images[index],
+                              originalFileName: `${username+index}.png`,
 
-                        content.innerHTML += `
-                    <div class="dcard">
-                        <div class="profilerr">
+                            }
+                          }).then(
+                            response => {
+                              url=response.fileUrl
+                              loader.style.display = "none";
+                              form.style.display = "none"
+                            htdw.style.display = "none"
+                              content.innerHTML += `
+                                              <div class="dcard">
+                                                  <div class="profilerr">
+                          
 
-
-                            <div class="colname">
-                            <span class="punun" >${data.username}</span>
-                            
-                                </div>
-                            
-                        </div>
-                        <div class="cover">
-                            <img src="${images[index]}" controls ></img>
-                        </div>
-                        <div class="dowlik">
-                            <a href="${images[index]}">Download Image</a>
-                        </div>
-                    </div> 
-`
-                        red.style.display = "flex"
+                          
+                                                      <div class="colname">
+                                                      <span class="punun" >${username}</span>
+                                                      
+                                                          </div>
+                                                      
+                                                  </div>
+                                                  <div class="cover">
+                                                      <img src="${url}" controls ></img>
+                                                  </div>
+                                                  <div class="dowlik">
+                                                      <a href="${url}?_download=true">Download Photo</a>
+                                                  </div>
+                                              </div> 
+                          `
+                                                  red.style.display = "flex"
+                            })
 
                     }
                 }
