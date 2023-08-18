@@ -87,7 +87,7 @@ def posts(request):
 
 
     except instaloader.exceptions.InstaloaderException as e:
-        return Response(e)
+        return Response("Unknown Error Ocured")
 
 
 
