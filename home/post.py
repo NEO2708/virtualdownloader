@@ -38,56 +38,45 @@ def posts(request):
     #     blob.upload_from_string(file_data, content_type='application/octet-stream')
 
     #     return blob.generate_signed_url(datetime.timedelta(minutes=5), method='GET')
-    try:
-        post = instaloader.Post.from_shortcode(L.context, post_url.split("/")[-2])
-        username=post.owner_username
-        # name=post.owner_profile.full_name
-        # caption=post.caption
-        avatar=post.owner_profile.get_profile_pic_url()
 
-        downloadable_urls = []
-        videopost=[]
-        videothumb=[]
-        imagepost=[]
-
-        if post.typename == "GraphVideo":
-            furl=post.video_url
-            vthumb=post.url
-            videothumb.append(vthumb)
-
+    post = instaloader.Post.from_shortcode(L.context, post_url.split("/")[-2])
+    username=post.owner_username
+    # name=post.owner_profile.full_name
+    # caption=post.caption
+    # avatar=post.owner_profile.get_profile_pic_url()
+    # downloadable_urls = []
+    videopost=[]
+    videothumb=[]
+    imagepost=[]
+    if post.typename == "GraphVideo":
+        furl=post.video_url
+        vthumb=post.url
+        videothumb.append(vthumb)
+        videopost.append(furl)
+        return Response({"videourls":videopost,"videothumb": videothumb,"imageurls": imagepost, "username":username }) 
+    elif post.typename == "GraphImage":
+        furl=post.url
+        imagepost.append(furl)
+        return Response({"videourls":videopost, "imageurls": imagepost, "username":username }) 
+    elif post.typename == "GraphSidecar":
+        count=1
+        for media in post.get_sidecar_nodes():             
+         if(media.is_video == True):
+            furl=media.video_url
             videopost.append(furl)
-            return Response({"videourls":videopost,"videothumb": videothumb,"imageurls": imagepost, "username":username }) 
-
-        elif post.typename == "GraphImage":
-
-            furl=post.url
+            vthumb=media.display_url
+            videothumb.append(vthumb)
+            count+=1
+         else:
+            furl=media.display_url
             imagepost.append(furl)
-            return Response({"videourls":videopost, "imageurls": imagepost, "username":username }) 
-        elif post.typename == "GraphSidecar":
-            count=1
-            for media in post.get_sidecar_nodes():             
-             if(media.is_video == True):
-                furl=media.video_url
-                videopost.append(furl)
-                vthumb=media.display_url
-                videothumb.append(vthumb)
-                count+=1
-             else:
-                furl=media.display_url
-
-                imagepost.append(furl)
-                count+=1
-            return Response({"videourls":videopost, "videothumb": videothumb,"imageurls": imagepost, "username":username})
-
-                 
-                 
-        else:
-            return None
-        
-
-
-    except instaloader.exceptions.InstaloaderException as e:
-        return Response("Unknown Error Ocured")
+            count+=1
+        return Response({"videourls":videopost, "videothumb": videothumb,"imageurls": imagepost, "username":username})
+             
+             
+    else:
+        return Response({"videourls":videopost, "videothumb": videothumb,"imageurls": imagepost, "username":username})
+    
 
 
 
