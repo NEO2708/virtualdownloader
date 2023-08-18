@@ -1,12 +1,6 @@
-
-
-
 from rest_framework.response import Response
-
 import instaloader
 from rest_framework.decorators import api_view
-
-from firebase_admin import storage
 @api_view()
 def posts(request):
     post_url = request.GET['link']
