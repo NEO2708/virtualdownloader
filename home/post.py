@@ -86,8 +86,8 @@ def posts(request):
         
 
 
-    except instaloader.exceptions.InstaloaderException:
-        return Response("error")
+    except instaloader.exceptions.InstaloaderException as e:
+        return Response(e)
 
 
 
