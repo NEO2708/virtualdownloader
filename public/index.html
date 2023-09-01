@@ -16,10 +16,629 @@
     <meta name="description"
         content="Download Instagram Images | Reels | Videos | IGTV - Fast, Easy and Secure Download For free. Try Now Virtual Downloader">
     <link rel="icon" type="image/x-icon" href="https://neo2708.github.io/pic.github.io/vdlogo.png">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="canonical" href="https://virtualdownloader.web.app/" />
 
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    transition: all .2s ease-in-out;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 
+}
+
+body {
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen, Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
+
+}
+
+:root {
+    --txtclr: black;
+    --thclr: #7017FF;
+    --thmclr: white
+}
+
+.df {
+    display: flex
+}
+
+.r {
+    flex-direction: row
+}
+
+.sa {
+    justify-content: space-around
+}
+.nor{
+    text-align: center;
+}
+.ca {
+    align-items: center
+}
+
+.lg {
+    color: var(--txtclr);
+    font-size: 25px;
+    font-weight: 600;
+    
+}
+
+.jc {
+    justify-content: center
+}
+
+.un {
+    text-decoration: none
+}
+
+.bb {
+    font-weight: 800
+}
+
+.asd {
+    color: var(--thclr)
+}
+
+.ac {
+    align-items: center
+}
+
+.colname {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column
+}
+
+.err {
+    color: red;
+    text-align: center;
+    font-size: 25px
+}
+
+.red {
+    display: none;
+    margin-top: 20px
+}
+
+#ref {
+    width: 300px;
+    height: 50px;
+    background-color: #8a2be2;
+    text-decoration: none;
+    align-items: center;
+    border-radius: 10px;
+    color: #fff
+}
+
+#ref:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .517);
+    background-color: #8000f7
+}
+
+#error {
+    color: red;
+    font-weight: 700;
+    font-size: 25px
+}
+
+.punun {
+    font-weight: 800
+}
+
+.c {
+    flex-direction: column;
+}
+
+.rrr {
+    height: auto;
+}
+
+.featcard {
+    width: 100%;
+
+    align-items: center;
+}
+
+.feathh {
+    text-align: center;
+    font-size: 35px;
+    margin: 30px 30px;
+
+}
+
+.vidfeat {
+    width: 350px;
+    height: auto;
+    border-radius: 8px;
+}
+#htdw{
+    margin-top: 50px;
+    background-color: #a0a0a02b;
+    padding: 10px 0px 30px 0px;
+}
+.featdec {
+    max-width: 550px;
+    text-align: center;
+}
+
+.featdec h4 {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.featdec p {
+    font-size: 25px;
+}
+
+.desc {
+
+    text-overflow: ellipsis;
+    height: 68px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+nav {
+    width: 100%;
+    height: auto;
+    background-color: #a0a0a02b;
+    width: 100%;
+    padding: 30px 0px;
+    text-align: center;
+}
+.htdwbtn{
+    color: black;
+    text-decoration: underline;
+    font-weight: 600;
+}
+#form {
+
+    width: 100%;
+    padding: 10px;
+    background-color: #a0a0a02b;
+    height: 100%;
+    gap: 50px;
+}
+.inpwrap{
+    margin-bottom: 30px;
+}
+.pstbtn{
+    /* position: absolute; */
+    width: 100px;
+    height: 50px;
+    background-color: #0063f7;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.inp {
+    width: 450px;
+    height: 50px;
+    padding: 0 10px;
+    color: #000;
+    /* background-color: var(--thmclr); */
+    outline: none;
+    border: 0px solid black;
+    
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px
+}
+.g50{
+    gap: 20px;
+}
+.clrbd {
+    background-color: #3f3f3fbc;
+
+    border-radius: 12px;
+    width: fit-content;
+    padding: 4px;
+    height: fit-content;
+    /* border:2px solid black; */
+    background: linear-gradient(to right, rgba(112, 23, 255, 1), rgba(255, 27, 144, 1), rgba(197, 0, 233, 1))
+}
+
+.col {
+    flex-direction: column
+}
+.fwt{
+    flex-wrap: wrap;
+}
+.btns {
+    width: 250px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    border: 0 solid #000;
+    background: linear-gradient(87deg, #F80261 0%, #7017FF 47.92%, #C500E9 100%);
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all;
+    transform: scale(1);
+    transition-duration: .5s;
+    display: none;
+    /* background-color: #03A9F4; */
+
+}
+
+.btns:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .234)
+}
+
+.btns:active {
+    transform: scale(1.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .234)
+}
+
+.infb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin-top: 50px;
+}
+
+.rs {
+    color: #7017ff
+}
+
+.vs {
+    color: #c500e9
+}
+
+.is {
+    color: #ff1b90
+}
+
+.wp {
+    flex-wrap: wrap
+}
+
+#content {
+    margin-top: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap
+}
+
+.dcard {
+    width: 400px;
+    height: auto;
+    border: 1px solid #000;
+    border-radius: 10px
+}
+
+.profilerr {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 2px solid #000;
+    padding: 5px 0
+}
+
+.profilerr img {
+    width: 50px;
+    border: 2px solid #000;
+    border-radius: 30px;
+    margin-left: 10px
+}
+
+.pun {
+    margin-right: 10px
+}
+
+.cover img {
+    width: 100%;
+    height: auto
+}
+
+.cover video {
+    width: 100%;
+    height: auto
+}
+
+.dowlik {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.dowlik a {
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #7017ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 10px
+}
+
+.loader {
+    border: 10px solid rgba(0, 0, 0, .447);
+    border-top: 10px solid #f80261;
+    border-bottom: 10px solid #7017ff;
+    border-radius: 50%;
+    width: 60px;
+    
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+.pw{
+    margin-top: 10px;
+    font-size: 30px;
+}
+#loader{
+    display: none;
+    height: 35vh;
+
+}
+#moto {
+    font-size: 35px;
+    color: rgb(32, 21, 31);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-decoration: underline;
+
+}
+
+#htd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    padding: 0px 30px;
+
+}
+
+#featuresw {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+}
+.boxstepin {
+    margin-top: 5px;
+}
+#features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+    max-width: 1200px;
+    width: 100%;
+    gap: 35px;
+
+
+}
+
+.boxhead {
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    font-size: 25px;
+    background-color: rgb(0, 0, 0);
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 50px;
+    /* border: 2px solid black; */
+}
+#clrbtn{
+    display: none;
+}
+.htdbox {
+    height: 100%;
+    width: 100%;
+    max-width: 900px;
+padding: 5px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.332);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.stepimg {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.355);
+}
+
+.boxstep {
+    font-weight: 600;
+    font-size: 25px;
+    color: #0063f7;
+    text-align: start;
+}
+.bostwr{
+    width: 70%;
+    text-align: start;
+}
+.dnbtn{
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+}
+.dnbtn:hover{
+    background-color: black;
+    color: white;
+}
+footer {
+    background-color: aliceblue;
+    padding: 25px;
+    flex-wrap: wrap;
+}
+
+footer a h1 {
+    text-align: center;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@media (max-width:1000px) {
+    .vidfeat {
+
+        width: 300px;
+        height: auto;
+    }
+
+    .featdec h4 {
+        font-size: 30px;
+    }
+
+    .featdec p {
+        font-size: 20px;
+    }
+
+    .featdec {
+        max-width: 400px;
+    }
+}
+
+@media (max-width:800px) {
+    .vidfeat {
+
+        width: 300px;
+        height: auto;
+    }
+
+    .featcard {
+        flex-wrap: wrap;
+    }
+
+    .featdec {
+        max-width: 600px;
+    }
+}
+
+@media(max-width:600px) {
+    .vidfeat {
+
+        width: 200px;
+        height: auto;
+    }
+    .htdbox{
+        flex-direction: column;
+    }
+    .bostwr{
+        width: 100%;
+    }
+    .boxstepin{
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 18px;
+    }
+    .boxstep{
+        font-size: 20px;
+    }
+.boxhead{
+    background-color: transparent;
+    color: black;
+}
+.bostwr{
+    text-align: center;
+}
+    #form {
+        padding: 0px;
+    }
+
+    .clrbd {
+        width: 97%;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    .inp {
+        width: 96%
+    }
+
+    .btns {
+        width: 95%
+    }
+
+    .infb {
+        font-size: 20px
+    }
+
+    .inf2 {
+        justify-content: center
+    }
+
+    .lg {
+        font-size: 20px
+    }
+
+    .asd {
+        font-size: 15px
+    }
+
+    #features {
+        grid-template-columns: repeat(1, minmax(auto, 1fr));
+
+    }
+
+    
+
+
+}
+
+@media(max-width:400px) {
+    .dcard {
+        width: auto
+    }
+}
+</style>
 </head>
 
 <body>
@@ -247,7 +866,222 @@
 
 </body>
 
- 
-<script src="script.js"></script>
+ <!-- <script>
+    var title = document.getElementById("title");
+var content = document.getElementById("content");
+var download = document.getElementById("download");
+var form = document.getElementById("form");
+var red = document.getElementsByClassName("red")[0];
+var paste = document.getElementById("pstbtn");
+var clear = document.getElementById("clrbtn");
+var error = document.getElementById("error");
+var htdw = document.getElementById("iasuh");
+var huc = document.getElementById("iasuh");
+var igdownload = document.getElementById("downloadButtonig");
+var loader = document.getElementById("loader");
+var inp = document.getElementById("postUrlInputIg")
+
+function trigger() {
+    async function uploadFromUrl(params) {  
+  const baseUrl  = "https://api.bytescale.com";
+  const path     = `/v2/accounts/FW25bfC/uploads/url`;
+  const entries  = obj => Object.entries(obj).filter(([,val]) => (val ?? null) !== null);
+  const response = await fetch(`${baseUrl}${path}`, {
+    method: "POST",
+    body: JSON.stringify(params.requestBody),
+    headers: Object.fromEntries(entries({
+      "Authorization": `Bearer public_FW25bfCA6joaxTzEo8CsadrkLpgs  `,
+      "Content-Type": "application/json",
+    }))
+  });
+  const result = await response.json();
+  if (Math.floor(response.status / 100) !== 2)
+    throw new Error(`Bytescale API Error: ${JSON.stringify(result)}`);
+  return result;
+}
+    var linkf = document.getElementById("postUrlInputIg").value;
+    ist = linkf.includes("www.instagram.com")
+    if (linkf == '') {
+        error.innerHTML = "Please Paste The Link "
+        paste.style.display = "block";
+        clear.style.display = "none";
+    }
+    // else if (ist == false) {
+    //     error.innerHTML = "Please Paste Valid Link"
+    // }
+    else {
+        igdownload.innerHTML = "Please Wait ..."
+        var url = "https://5663-2401-4900-1f3f-7d19-39e0-cba6-d242-5fd9.ngrok-free.app/insta?link=" + linkf;
+
+        loader.style.display = "flex";
+        fetch(url, { mode: 'cors', method: "GET" })
+            .then((response) => response.json())
+            .then((data) => {
+
+
+
+                const videos = data.videourls;
+                const images = data.imageurls;
+                const username= data.username;
+                
+
+       
+               if (videos.length >= 1 || images.length >= 1) {
+
+                    for (let index = 0; index < videos.length; index++) {
+                       
+
+
+                        uploadFromUrl({
+                           
+                            requestBody: {
+                              url: videos[index],
+                              originalFileName: `${username}.mp4`,
+                            }
+                          }).then(
+                            response => {
+                              url=response.fileUrl
+                              loader.style.display = "none";
+                              form.style.display = "none"
+                              htdw.style.display = "none"
+                              content.innerHTML += `
+                                              <div class="dcard">
+                                                  <div class="profilerr">
+
+                          
+                          
+                                                      <div class="colname">
+                                                      <span class="punun" >${username}</span>
+                                                      
+                                                          </div>
+                                                      
+                                                  </div>
+                                                  <div class="cover">
+                                                      <video src="${url}"  ></video>
+                                                  </div>
+                                                  <div class="dowlik">
+                                                      <a href="${url}?_download=true">Download Video</a>
+                                                  </div>
+                                              </div> 
+                          `
+                                                  red.style.display = "flex"
+                            })
+
+                    }
+                    for (let index = 0; index < images.length; index++) {
+                        
+
+                        uploadFromUrl({
+                            requestBody: {
+                              url: images[index],
+                              originalFileName: `${username+index}.png`,
+
+                            }
+                          }).then(
+                            response => {
+                              url=response.fileUrl
+                              loader.style.display = "none";
+                              form.style.display = "none"
+                            htdw.style.display = "none"
+                              content.innerHTML += `
+                                              <div class="dcard">
+                                                  <div class="profilerr">
+                          
+
+                          
+                                                      <div class="colname">
+                                                      <span class="punun" >${username}</span>
+                                                      
+                                                          </div>
+                                                      
+                                                  </div>
+                                                  <div class="cover">
+                                                      <img src="${url}" controls ></img>
+                                                  </div>
+                                                  <div class="dowlik">
+                                                      <a href="${url}?_download=true">Download Photo</a>
+                                                  </div>
+                                              </div> 
+                          `
+                                                  red.style.display = "flex"
+                            })
+
+                    }
+                }
+
+
+                else {
+                    igdownload.innerHTML = "Download "
+
+                    content.innerHTML = `<h1 class="err" >Check if the Account is Not PRIVATE and try again </h1>`
+                    red.style.display = "flex"
+                }
+
+            })
+
+    }
+}
+
+
+paste.addEventListener("click", async () => {
+
+    try {
+        const text = await navigator.clipboard.readText()
+        inp.value += text;
+        // igdownload.style.display="flex";
+        trigger()
+        paste.style.display = "none";
+        clear.style.display = "block";
+
+    } catch (error) {
+        console.log('Failed to read clipboard. Using execCommand instead.');
+        inp.focus();
+        const result = document.execCommand('paste')
+    }
+})
+
+inp.addEventListener("input", () => {
+    paste.style.display = "none";
+    clear.style.display = "block";
+    trigger()
+})
+clear
+function clearinp() {
+    inp.value = '';
+    paste.style.display = "block";
+    clear.style.display = "none";
+}
+ </script> -->
+<!-- <script src="script.js"></script> -->
+<script>
+     async function uploadFromUrl(params) {  
+  const baseUrl  = "https://api.bytescale.com";
+  const path     = `/v2/accounts/FW25bfC/uploads/url`;
+  const entries  = obj => Object.entries(obj).filter(([,val]) => (val ?? null) !== null);
+  const response = await fetch(`${baseUrl}${path}`, {
+    method: "POST",
+    body: JSON.stringify(params.requestBody),
+    headers: Object.fromEntries(entries({
+      "Authorization": `Bearer public_FW25bfCA6joaxTzEo8CsadrkLpgs  `,
+      "Content-Type": "application/json",
+    }))
+  });
+  const result = await response.json();
+  if (Math.floor(response.status / 100) !== 2)
+    throw new Error(`Bytescale API Error: ${JSON.stringify(result)}`);
+  return result;
+}
+    uploadFromUrl({
+                            requestBody: {
+                              url: "https://rr5---sn-ci5gup-5hqe.googlevideo.com/videoplayback?expire=1693613312&ei=oCjyZOOUKfy1juMPxZmI4Ak&ip=2401%3A4900%3A1f3f%3A7d19%3A39e0%3Acba6%3Ad242%3A5fd9&id=o-AHWBvtIj6RXAcCx6CcFuG4dcQ09JcAljKwf6m2TiaCa3&itag=18&source=youtube&requiressl=yes&mh=9P&mm=31%2C29&mn=sn-ci5gup-5hqe%2Csn-ci5gup-cvhk&ms=au%2Crdu&mv=m&mvi=5&pcm2cms=yes&pl=54&initcwndbps=1186250&spc=UWF9f_8o8IBrzzwe4inu0VepRBF6t0NihLOwkfzKQA&vprv=1&svpuc=1&mime=video%2Fmp4&ns=_yuUn3zKGCBxaLTU1-ipJ_QP&gir=yes&clen=15394250&ratebypass=yes&dur=171.432&lmt=1693371542674058&mt=1693591298&fvip=8&fexp=24007246&beids=24350017&c=WEB&txp=4538434&n=BanqV69ULjchmJOPqO&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpcm2cms%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRgIhAItvWKTpfsxC9LpRcvb72BZMSkZ06j9XhYSvg3x7myKzAiEA2Mimz06Ds5T_x0PuWs3MailgcWnA2na1jg_W7X2cfnk%3D&sig=AOq0QJ8wRgIhAJmnW8I84LCPnQsALV4AIFnCWGaFLHn35McqRNRD10STAiEA_zKYBcmrPRzAV65cYIWh3YUqEJzvN7iqJpT7MRhpl8A=",
+                              originalFileName: `video.mp4`,
+
+                            }
+                        }).then((result) => {
+                            console.log(result)
+                        }).catch((err) => {
+                            console.log(err)
+                        });
+</script>
 
 </html>

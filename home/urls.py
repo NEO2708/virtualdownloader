@@ -7,11 +7,12 @@ from home import hastag
 from home import postDownloader
 from home import post
 
+
 urlpatterns = [
     path('insta', post.posts),
     # path('homepage',home.homepage),
-    # path('',home.homepage),
-    # path('igprofile',downloadprof.downloadprof),
+    path('',home.homepage),
+    path('profile',downloadprof.downloadprof),
     # path("hashtag",hastag.download_hashtag_posts),
 
 ]

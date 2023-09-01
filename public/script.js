@@ -15,13 +15,13 @@ var inp = document.getElementById("postUrlInputIg")
 function trigger() {
     async function uploadFromUrl(params) {  
   const baseUrl  = "https://api.bytescale.com";
-  const path     = `/v2/accounts/12a1yXY/uploads/url`;
+  const path     = `/v2/accounts/FW25bfC/uploads/url`;
   const entries  = obj => Object.entries(obj).filter(([,val]) => (val ?? null) !== null);
   const response = await fetch(`${baseUrl}${path}`, {
     method: "POST",
     body: JSON.stringify(params.requestBody),
     headers: Object.fromEntries(entries({
-      "Authorization": `Bearer public_12a1yXY8DiUy1WgBg9cBLzYxQnwd`,
+      "Authorization": `Bearer public_FW25bfCA6joaxTzEo8CsadrkLpgs  `,
       "Content-Type": "application/json",
     }))
   });
@@ -37,12 +37,12 @@ function trigger() {
         paste.style.display = "block";
         clear.style.display = "none";
     }
-    else if (ist == false) {
-        error.innerHTML = "Please Paste Valid Link"
-    }
+    // else if (ist == false) {
+    //     error.innerHTML = "Please Paste Valid Link"
+    // }
     else {
         igdownload.innerHTML = "Please Wait ..."
-        var url = "http://127.0.0.1:8000/insta?link=" + linkf;
+        var url = "https://5663-2401-4900-1f3f-7d19-39e0-cba6-d242-5fd9.ngrok-free.app/insta?link=" + linkf;
 
         loader.style.display = "flex";
         fetch(url, { mode: 'cors', method: "GET" })

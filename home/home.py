@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import Context, loader
 
-def homepage(request):
-      
-    # render function takes argument  - request
-    # and return HTML as response
-    return render(request, "index.html")
+# from django.shortcuts import render_to_response
+
+def homepage (request):
+    return render(request, 'index.html')

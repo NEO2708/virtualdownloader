@@ -9,65 +9,55 @@ def     downloadprof(request):
     stream=[]
     username = request.GET['link']
     
-    # L.login("p_chauhan_58", "rina27")
     posts = instaloader.Profile.from_username(L.context, username).get_posts()
     users = set()
-    max_count=100
+    # max_count=100
     sidecar=[]
-
+    videopost=[]
+    videothumb=[]
+    imagepost=[]
     count = 1
-    scc=1
+
 
     for post in posts:
+        print(post)
         type=post.typename
-        # print(type)
+        # if(count>=max_count):
+        #    break
+        
+
         if(type == "GraphVideo"):
-            js={"NO":count,"Url":post.video_url,"Caption":post.caption,"Date":post.date,"type":"Video"}
-            stream.append(js)
+            furl=post.video_url
+            vthumb=post.url
+            videothumb.append(vthumb)
+            videopost.append(furl)
             count += 1
+
         elif(type == "GraphImage"):
-            js={"NO":count,"Url":post.url,"Caption":post.caption,"Date":post.date,"type":"Image"}
-            stream.append(js)
+            furl=post.url
+            imagepost.append(furl)
             count += 1
+
+        elif post.typename == "GraphSidecar":
+
+            for media in post.get_sidecar_nodes():             
+             if(media.is_video == True):
+                furl=media.video_url
+                videopost.append(furl)
+                vthumb=media.display_url
+                videothumb.append(vthumb)
+
+             else:
+                furl=media.display_url
+                imagepost.append(furl)
+            count+=1
         else:
-            media=post._full_metadata
-            edge=media.get("edge_sidecar_to_children")
-            edge=edge.get("edges")
-            mdct=10
+            return Response({"videourls":videopost, "videothumb": videothumb,"imageurls": imagepost, "username":username})
+    return Response({"videourls":videopost, "videothumb": videothumb,"imageurls": imagepost, "username":username})
+           
+        
 
-
-            for m in edge:
-
-                sidepost=m.get("node")
-                type=sidepost.get("__typename")
-                if(count >mdct):
-                    count=1
-                    break
-                else:
-                    if(type == "GraphVideo"):
-                        url=sidepost.get("video_url")
-                        sc={"NU:":scc,"Url":url,"type":"Video"}
-                        sidecar.append(sc)
-                        scc +=1
-                    elif(type == "GraphImage"):
-                        dr=sidepost.get("display_resources")
-                        url=dr[2]
-                        url=url.get("src")
-                        sc={"NU:":scc,"Url":url,"type":"Image"}
-                        sidecar.append(sc)
-                        scc +=1
-                    else:
-                        break
+        
 
 
 
-            js={"NO":count,"Url":sidecar,"Caption":post.caption,"Date":post.date,"type":"SideCar"}
-            stream.append(js)
-            count += 1
-
-        if count >= max_count:
-            break
-
-
-
-    return Response(stream)
